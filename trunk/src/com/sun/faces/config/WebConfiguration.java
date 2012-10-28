@@ -284,7 +284,8 @@ public class WebConfiguration {
             if (null == value) {
                 result = new String[0];
             } else {
-                result = Util.split(value, sep);
+                Map<String, Object> appMap = FacesContext.getCurrentInstance().getExternalContext().getApplicationMap();
+                result = Util.split(appMap, value, sep);
             }
             cachedListParams.put(param, result);
         }
@@ -451,7 +452,7 @@ public class WebConfiguration {
                                  param.getQualifiedName(),
                                  "true|false",
                                  "true|false",
-                                 new Boolean(param.getDefaultValue()).toString()
+                                 param.getDefaultValue()
                            });
             }
             return false;
@@ -566,8 +567,8 @@ public class WebConfiguration {
      * @param servletContext the ServletContext of interest
      */
     private void initSetList(ServletContext servletContext) {
-        for (@SuppressWarnings("rawtypes")
-		Enumeration e = servletContext.getInitParameterNames();
+
+        for (Enumeration e = servletContext.getInitParameterNames();
               e.hasMoreElements(); ) {
             String name = e.nextElement().toString();
             if (name.startsWith("com.sun.faces") ||
@@ -678,6 +679,9 @@ public class WebConfiguration {
      * @param contextName the context name
      */
     private void processJndiEntries(String contextName) {
+
+        // Removing references JNDI code in support of GAE
+
     }
 
 
