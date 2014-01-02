@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.wildstartech.gae.jsf21template;
 
 import java.io.IOException;
@@ -18,10 +15,10 @@ import javax.servlet.http.HttpServletRequestWrapper;
 /**
  * Replaces the If-Modified-Since header until Google App Engine bug 8415 is 
  * resolved.
+ *
  * @see http://code.google.com/p/googleappengine/issues/detail?id=8415
  * 
  * @author Derek Berube, Wildstar Technologies
- *
  */
 public class HttpIfModifiedSinceFix implements Filter {
 	private static final String _CLASS = HttpIfModifiedSinceFix.class.getName();
