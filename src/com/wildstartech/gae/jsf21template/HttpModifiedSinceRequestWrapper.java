@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.wildstartech.gae.jsf21template;
 
 import java.util.ArrayList;
@@ -13,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
- * @author Derek Berube, WildstarTechnologies, LLC.
- *
+ * Request wrapper to hide the If-Modified-Since request header.
+ * 
+ * @author Derek Berube, Wildstar Technologies, LLC.
+ * @version 2014-10-01, 1.0
+ * 
+ * @see https://code.google.com/p/googleappengine/issues/detail?id=8415
  */
 public class HttpModifiedSinceRequestWrapper extends HttpServletRequestWrapper {
 	private static final String _CLASS = 
