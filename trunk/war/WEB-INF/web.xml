@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns="http://java.sun.com/xml/ns/javaee"
-   xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-	<display-name>
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+   <display-name>
     Wildstar Technologies, LLC. Google App Engine JSF 2.1 Template
    </display-name>
    <description>
     Template JSF 2.1 application configured to run on the Google
     AppEngine for Java.
    </description>
-   <!-- ***** Designate server-side state saving. *****  -->
+   <!-- ***** Designate client-side state saving. *****  -->
    <context-param>
       <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-      <param-value>server</param-value>
+      <param-value>client</param-value>
    </context-param>
    <!-- Set the default suffix for JSF pages to .xhtml -->
    <context-param>
@@ -41,23 +41,11 @@
       <param-name>com.sun.faces.expressionFactory</param-name>
       <param-value>org.jboss.el.ExpressionFactoryImpl</param-value>   
    </context-param> 
-   <!-- ***** Filter Definitions ***** -->
-   <filter>
-      <display-name>AppEngine Bug 8145 Work Around</display-name>
-      <description>
-      Suppresses the If Modified Since header until GAE bug 8145 is fixed.
-      </description>
-      <filter-name>GAEBug8145WorkAround</filter-name>
-      <filter-class>com.wildstartech.gae.jsf21template.HttpIfModifiedSinceFix</filter-class>
-   </filter>
-   <filter-mapping>
-      <filter-name>GAEBug8145WorkAround</filter-name>
-      <url-pattern>/*</url-pattern>
-   </filter-mapping>
    <!-- ***** Load the JavaServer Faces Servlet ***** -->
    <servlet>
       <servlet-name>Faces Servlet</servlet-name>
-      <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>      
+      <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
    </servlet>
    <servlet-mapping>
       <servlet-name>Faces Servlet</servlet-name>
